@@ -158,4 +158,30 @@ public class Tree {
         printNodeAtK(root2.left, k-1,result);
         printNodeAtK(root2.right, k-1,result);
     }
+    public void deleteNode(int key){
+        root=deleteNode(root,key);
+    }
+    private Node deleteNode(Node root, int key) {
+        if(root==null)return root;
+        if(key<root.value){
+            root.left=deleteNode(root.left,key);
+        } else if(key>root.value){
+            root.right=deleteNode(root.right,key);
+        } else{
+            if(root.left==null)return root.right;
+            if(root.right==null)return root.left;
+            root.value=findMinimum(root.right);
+            root.right=deleteNode(root.right,root.value);
+        }
+        return root;
+        
+    }
+    private int findMinimum(Node node){
+        int min=node.value;
+        while(node.left!=null){
+            min=node.left.value;
+            node=node.left;
+        }
+        return min;
+    }
 }

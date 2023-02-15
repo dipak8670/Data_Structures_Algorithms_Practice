@@ -20,6 +20,8 @@ public class TreeImp {
         t.inOrder();
         t.postOrder();
         t.BFS();
+        t.deleteNode(10);
+        t.BFS();
         System.out.println(t.findHeight());
         System.out.println(t.min());
         System.out.println(t.minValue());
